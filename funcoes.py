@@ -15,42 +15,46 @@ def infosalario ():
 
     with open (endercoArquivo,"w") as arquivos:         
         arquivos.write(salario+';'+data+';'+poupar+';'+rendimento+'\n'+arquivoAtual)
-        #arquivos.write(str(salario) +'\n')
+        
     
 
 
 def altsalario ():
-    nnarquivo = ''
+
     data = input('informe o mes do Rendimento (dd/MM)')
     with open(endercoArquivo, 'r+') as arquivo:
+      arquivoattual = arquivo.read()
+      arquivo.write(arquivoattual)
        
       for linha in arquivo:
         if data in linha:
          array = []
          array = linha.split(';')
          print('Rendimento Encontrado:')
-         array[0] = input('Informe o Salario: ')
-  
+         novoredimento = input('Informe o Salario: ')
+         array[0] = novoredimento
+         arquivo.write(arquivoattual+linha)
     
+
+
 
 def excsalario():
     novoArquivo =''
     data = input('informe o data (dd/MM)')
 
-    with open("liquidemes.txt", 'r') as arquivo:
+    with open(endercoArquivo, 'r') as arquivo:
        
       for linha in arquivo:
         
          if data not in linha:
           novoArquivo = novoArquivo+ linha
-     
-       
+            
     with open (endercoArquivo,"w") as arquivos:         
        arquivos.write(novoArquivo)    
 
 def listarsalario():
   
-    with open("liquidemes.txt", 'r') as arquivo:
+    with open(endercoArquivo, 'r') as arquivo:
               
         for linha in arquivo:
          #print(linha)
